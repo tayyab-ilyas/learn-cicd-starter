@@ -18,5 +18,35 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
+      - name: install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
       - name: Run Unit Tests
         run: go test ./... -cover
+
+      - name: Static Security Check
+        run: gosec ./...
+
+  styling:
+      name: formatting
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Set up fmt
+          uses: actions/setup-go@v4
+          with:
+            go-version: "1.20"
+
+        - name: check out code
+          uses: actions/checkout@v3
+          
+        - name: Install Staticcheck
+          run: go install honnef.co/go/tools/cmd/staticcheck@latest
+        
+        - name: Styling
+          run: go fmt ./...
+           
+        - name: Linitng  
+          run: staticcheck ./...
+
+         
