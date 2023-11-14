@@ -1,6 +1,6 @@
 # Test Coverage
 
-![code coverage badge](https://github.com/tayyab-ilyas/learn-cicd-starter/actions/workflows/Tests/badge.svg)
+![Test Coverage](https://github.com/tayyab-ilyas/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
 
 
 ## Local Development
