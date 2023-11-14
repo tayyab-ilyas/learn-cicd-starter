@@ -22,9 +22,10 @@ jobs:
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
 
       - name: Run Unit Tests
-        run: 
-            go test ./... -cover
-            gosec ./...
+        run: go test ./... -cover
+
+      - name: Static Security Check
+        run: gosec ./...
 
   styling:
       name: formatting
@@ -39,12 +40,13 @@ jobs:
         - name: check out code
           uses: actions/checkout@v3
           
-        - name: install staticcheck
+        - name: Install Staticcheck
           run: go install honnef.co/go/tools/cmd/staticcheck@latest
         
-        - name: styling & linting
-          run: 
-            go fmt ./...
-            staticcheck ./...
+        - name: Styling
+          run: go fmt ./...
+           
+        - name: Linitng  
+          run: staticcheck ./...
 
          
